@@ -9,10 +9,12 @@ export default function CardMovie({ className, data, genres, hoover, details }: 
   const { id, poster_path, title, vote_average, release_date, genre_ids } = data;
   const genresNames = genre_ids?.map((genre) => genres?.find((g) => g.id == genre)?.name);
 
+  if (!data || !poster_path) return;
+
   return (
     <Link to={`/Movie?m=${id}`}>
       <div
-        className={`relative aspect-[22/33] cursor-pointer rounded-md text-white transition-transform duration-500 ease-in-out ${className} ${hoover && 'opacity-70 hover:z-40 hover:scale-[1.05] hover:opacity-100'}`}
+        className={`animate-fade-in anima relative aspect-[22/33] cursor-pointer overflow-hidden rounded-md text-white transition-transform duration-500 ${className} ${hoover && 'opacity-70 hover:z-40 hover:scale-[1.05] hover:opacity-100'}`}
       >
         <img className="sticky z-30 rounded-md object-cover" src={`https://image.tmdb.org/t/p/w500/${poster_path}`} alt={`${title} Poster`} />
 
