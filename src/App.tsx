@@ -10,10 +10,10 @@ import { GenderMovieProvider } from '@/contexts/genderMovieContext';
 function App() {
   return (
     <>
-      <Header />
+      <Router basename="movie-discover">
+        <Header />
 
-      <GenderMovieProvider>
-        <Router basename="movie-discover">
+        <GenderMovieProvider>
           <Routes>
             <Route path="/" element={<Navigate to={'/Home'} />} />
             <Route path="*" element={<Navigate to={'/Home'} />} />
@@ -22,8 +22,8 @@ function App() {
             <Route path="/Movie" element={<MovieDetails />} />
             <Route path="/SurpriseMe" element={<SurpriseMe />} />
           </Routes>
-        </Router>
-      </GenderMovieProvider>
+        </GenderMovieProvider>
+      </Router>
     </>
   );
 }
