@@ -1,11 +1,12 @@
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 
+import { GenderMovieProvider } from '@/contexts/genderMovieContext';
+
 import Header from '@components/header';
 
 import Home from '@pages/home';
 import MovieDetails from '@pages/movie';
 import SurpriseMe from '@pages/surpriseMe';
-import { GenderMovieProvider } from '@/contexts/genderMovieContext';
 
 function App() {
   return (
