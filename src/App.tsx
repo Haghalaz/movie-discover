@@ -13,7 +13,7 @@ function App() {
       <Header />
 
       <GenderMovieProvider>
-        <Router>
+        <Router basename="movie-discover">
           <Routes>
             <Route path="/" element={<Navigate to={'/Home'} />} />
             <Route path="*" element={<Navigate to={'/Home'} />} />
