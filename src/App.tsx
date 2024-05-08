@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { GenderMovieProvider } from '@/contexts/genderMovieContext';
 
@@ -11,20 +11,18 @@ import SurpriseMe from '@pages/surpriseMe';
 function App() {
   return (
     <>
-      <Router basename="/movie-discover/">
-        <Header />
+      <Header />
 
-        <GenderMovieProvider>
-          <Routes>
-            <Route path="/" element={<Navigate to={'/Home'} />} />
-            <Route path="*" element={<Navigate to={'/Home'} />} />
+      <GenderMovieProvider>
+        <Routes>
+          <Route path="/" element={<Navigate to={'/Home'} />} />
+          <Route path="*" element={<Navigate to={'/Home'} />} />
 
-            <Route path="/Home" element={<Home />} />
-            <Route path="/Movie" element={<MovieDetails />} />
-            <Route path="/SurpriseMe" element={<SurpriseMe />} />
-          </Routes>
-        </GenderMovieProvider>
-      </Router>
+          <Route path="/Home" element={<Home />} />
+          <Route path="/Movie" element={<MovieDetails />} />
+          <Route path="/SurpriseMe" element={<SurpriseMe />} />
+        </Routes>
+      </GenderMovieProvider>
     </>
   );
 }
