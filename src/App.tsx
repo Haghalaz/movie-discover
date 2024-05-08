@@ -11,7 +11,7 @@ import SurpriseMe from '@pages/surpriseMe';
 function App() {
   return (
     <>
-      <Router basename="movie-discover">
+      <Router basename="/movie-discover/">
         <Header />
 
         <GenderMovieProvider>
