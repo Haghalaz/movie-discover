@@ -6,6 +6,7 @@ import { Switch } from '@components/ui/switch.tsx';
 import { useGenderMovieContext } from '@/contexts/genderMovieContext';
 import useAxios from '@hooks/useAxios.ts';
 import { Pagination, PaginationContent, PaginationItem, PaginationNext, PaginationPrevious } from '@components/ui/pagination.tsx';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@components/ui/accordion.tsx';
 
 export default function SurpriseMe() {
   const genderMovieContext = useGenderMovieContext();
@@ -44,20 +45,28 @@ export default function SurpriseMe() {
 
       <div className="flex grid-cols-10 flex-col gap-12 lg:grid">
         <div className="col-span-2 space-y-4">
-          <h3 className="font-semibold text-white">Estilos</h3>
-          <div className=" grid grid-cols-2 items-center justify-center gap-6 text-white lg:grid-cols-1">
-            {genderMovieContext.genres?.map(({ id, name }: Genre) => (
-              <div
-                key={id}
-                className={`flex items-center gap-6 rounded-md border  p-4 transition-all ${gender.includes(id.toString()) ? 'border-green-500' : 'border-white/10'}`}
-              >
-                <Switch id={name} checked={gender.includes(id.toString())} onCheckedChange={(checked) => handleCheckboxChange(id.toString(), checked)} />
-                <label htmlFor={name} className="text-sm">
-                  {name}
-                </label>
-              </div>
-            ))}
-          </div>
+          <Accordion defaultValue="genres" type="single" collapsible className="w-full">
+            <AccordionItem value="genres">
+              <AccordionTrigger className="font-semibold text-white">
+                <h3>Estilos</h3>
+              </AccordionTrigger>
+              <AccordionContent>
+                <div className=" grid grid-cols-2 items-center justify-center gap-6 text-white lg:grid-cols-1">
+                  {genderMovieContext.genres?.map(({ id, name }: Genre) => (
+                    <div
+                      key={id}
+                      className={`flex items-center gap-6 rounded-md border p-4 transition-all ${gender.includes(id.toString()) ? 'border-green-500' : 'border-white/10'}`}
+                    >
+                      <Switch id={name} checked={gender.includes(id.toString())} onCheckedChange={(checked) => handleCheckboxChange(id.toString(), checked)} />
+                      <label htmlFor={name} className="text-sm">
+                        {name}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
 
         <div className="col-span-8 space-y-4">
@@ -69,7 +78,7 @@ export default function SurpriseMe() {
                 <PaginationPrevious />
               </PaginationItem>
 
-              <PaginationItem>
+              <PaginationItem className="truncate">
                 {page} de {movies?.total_pages || '...'} resultados
               </PaginationItem>
 
@@ -79,7 +88,7 @@ export default function SurpriseMe() {
             </PaginationContent>
           </Pagination>
 
-          <div className="relative grid grid-cols-1 justify-items-center gap-5 lg:grid-cols-2 xl:grid-cols-4">
+          <div className="relative grid grid-cols-2 justify-items-center gap-5 md:grid-cols-4 ">
             {isLoading && (
               <div className="absolute left-0 top-0 col-span-full grid w-full place-items-center">
                 <Loader2 className="animate-spin stroke-amber-50" />

@@ -41,7 +41,7 @@ export default function Home() {
             <Carousel setApi={setApi} opts={{ loop: true, duration: 60 }} plugins={[Autoplay({ delay: 3000 })]}>
               <CarouselContent>
                 {nowPlaying?.results.map((data: MovieResume, i: number) => (
-                  <CarouselItem key={data.id} className="basis-1/2 lg:basis-1/5">
+                  <CarouselItem key={data.id} className="basis-1/2 md:basis-1/5">
                     <CardMovie
                       className={`origin-center ${i === current ? 'scale-100 opacity-100' : `-rotate-3 scale-75 opacity-70`}`}
                       data={data}
@@ -62,7 +62,7 @@ export default function Home() {
       <div className="space-y-4">
         <h3 className="font-semibold text-white">Populares</h3>
 
-        <div className="grid grid-cols-2 justify-items-center gap-12 lg:grid-cols-5">
+        <div className="grid grid-cols-2 justify-items-center gap-12 md:grid-cols-5">
           {trending?.results.map((data: MovieResume) => <CardMovie key={data.id} data={data} genres={genresResponse?.genres} hoover={true} details="show" />)}
         </div>
       </div>

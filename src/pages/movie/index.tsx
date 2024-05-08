@@ -17,7 +17,7 @@ export default function MovieDetails() {
   return (
     <>
       <div className="static w-full text-white">
-        <div className="relative flex h-[16rem] w-full md:h-[32rem]">
+        <div className="relative flex h-[16rem] w-full lg:h-[32rem]">
           {!!movie?.backdrop_path && (
             <>
               <img
@@ -31,7 +31,7 @@ export default function MovieDetails() {
           )}
         </div>
 
-        <div className="relative z-50 -translate-y-24 space-y-8 px-4 md:px-[24rem]">
+        <div className="relative z-50 -translate-y-24 space-y-8 px-4 lg:px-[24rem]">
           <div className="space-y-2">
             <div>
               <h4 className="font-semibold">{movie?.title}</h4>
